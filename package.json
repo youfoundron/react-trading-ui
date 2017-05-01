@@ -52,7 +52,11 @@
   },
   "standard": {
     "parser": "babel-eslint",
-    "globals": [ "it", "expect", "describe" ]
+    "globals": [
+      "it",
+      "expect",
+      "describe"
+    ]
   },
   "jest": {
     "verbose": true
