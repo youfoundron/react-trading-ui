@@ -6,13 +6,19 @@
   "license": "GPL-3.0",
   "scripts": {
     "commit": "git cz",
-    "lint": "standard | snazzy"
+    "lint": "standard | snazzy",
+    "test": "jest"
   },
   "dependencies": {},
   "devDependencies": {
     "babel-eslint": "^7.2.3",
+    "babel-jest": "^19.0.0",
     "commitizen": "^2.9.6",
     "cz-conventional-changelog": "^2.0.0",
+    "enzyme": "^2.8.2",
+    "jest": "^19.0.2",
+    "react-addons-test-utils": "^15.5.1",
+    "react-test-renderer": "^15.5.4",
     "snazzy": "^7.0.0",
     "standard": "^10.0.2"
   },
@@ -24,5 +30,8 @@
   },
   "standard": {
     "parser": "babel-eslint"
+  },
+  "jest": {
+    "verbose": true
   }
 }
