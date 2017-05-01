@@ -8,7 +8,7 @@ const libDir = path.resolve(__dirname, 'lib')
 const entryReducer = fileNames =>
   fileNames.reduce((entries, fileName) => {
     const {base, name, ext} = path.parse(fileName)
-    if (ext) entries[name] = path.join('./', base)
+    if (ext) entries[name] = path.resolve(srcDir, base)
     return entries
   }, {})
 
@@ -21,7 +21,6 @@ const dynamicEntry = () => new Promise(
   )
 
 export default {
-  context: srcDir,
   entry: dynamicEntry,
   output: {
     path: libDir,

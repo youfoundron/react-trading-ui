@@ -6,6 +6,8 @@
   "license": "GPL-3.0",
   "scripts": {
     "build": "webpack",
+    "clean": "rimraf lib",
+    "prepublish": "npm run clean && npm run build",
     "commit": "git cz",
     "lint": "standard | snazzy",
     "test": "jest"
@@ -35,6 +37,7 @@
     "pre-commit": "^1.2.2",
     "react-addons-test-utils": "^15.5.1",
     "react-test-renderer": "^15.5.4",
+    "rimraf": "^2.6.1",
     "snazzy": "^7.0.0",
     "standard": "^10.0.2",
     "styled-jsx": "^0.5.7",
