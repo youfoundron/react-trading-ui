@@ -13,6 +13,9 @@
   "devDependencies": {
     "babel-eslint": "^7.2.3",
     "babel-jest": "^19.0.0",
+    "babel-plugin-ramda": "^1.2.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
     "commitizen": "^2.9.6",
     "cz-conventional-changelog": "^2.0.0",
     "enzyme": "^2.8.2",
@@ -20,7 +23,8 @@
     "react-addons-test-utils": "^15.5.1",
     "react-test-renderer": "^15.5.4",
     "snazzy": "^7.0.0",
-    "standard": "^10.0.2"
+    "standard": "^10.0.2",
+    "styled-jsx": "^0.5.7"
   },
   "peerDependencies": {},
   "config": {
