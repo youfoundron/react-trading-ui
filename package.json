@@ -9,6 +9,10 @@
     "lint": "standard | snazzy",
     "test": "jest"
   },
+  "pre-commit": [
+    "lint",
+    "test"
+  ],
   "dependencies": {
     "prop-types": "^15.5.8",
     "ramda": "^0.23.0",
@@ -25,6 +29,7 @@
     "cz-conventional-changelog": "^2.0.0",
     "enzyme": "^2.8.2",
     "jest": "^19.0.2",
+    "pre-commit": "^1.2.2",
     "react-addons-test-utils": "^15.5.1",
     "react-test-renderer": "^15.5.4",
     "snazzy": "^7.0.0",
