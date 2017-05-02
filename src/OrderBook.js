@@ -16,6 +16,9 @@ const unsafePropNames = [
   'bids',
   'depth',
   'headerText',
+  'sizeLabel',
+  'priceLabel',
+  'positionLabel',
   'getSize',
   'getPrice',
   'getPosition'
@@ -50,6 +53,9 @@ OrderBook.propTypes = {
   bids: PropTypes.array,
   depth: PropTypes.number,
   headerText: PropTypes.string,
+  sizeLabel: PropTypes.string,
+  priceLabel: PropTypes.string,
+  positionLabel: PropTypes.string,
   getSize: PropTypes.func,
   getPrice: PropTypes.func,
   getPosition: PropTypes.func
@@ -60,6 +66,9 @@ OrderBook.defaultProps = {
   bids: [],
   depth: 50,
   headerText: 'Order Book',
+  sizeLabel: 'Market Size',
+  priceLabel: 'Price (USD)',
+  positionLabel: 'My Size',
   getSize: getters.getSize,
   getPrice: getters.getPrice,
   getPosition: getters.getPosition
