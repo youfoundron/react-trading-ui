@@ -18,6 +18,10 @@ class DemoApp extends React.Component {
         {/* <DepthChart /> */}
         {/* <PriceChart /> */}
         {/* <TradeHistory /> */}
+        <style jsx global>{`
+          html, body, #root, .demo { height: 100%; }
+          body { margin: 0; }
+        `}</style>
       </div>
     )
   }
