@@ -3,7 +3,7 @@ import glamorous from 'glamorous'
 
 import colors from '../defaults/colors'
 
-const FintechUIHeader = glamorous.div({
+const FintechUIHeader = glamorous.header({
   fontSize: '1.5rem',
   padding: '.8rem',
   textTransform: 'uppercase',
