@@ -1,4 +1,4 @@
 {
   presets: ["es2015", "react"],
-  plugins: ["ramda", "styled-jsx/babel"]
+  plugins: ["ramda", "styled-jsx/babel", "glamorous-displayname"]
 }
