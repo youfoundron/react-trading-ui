@@ -7,8 +7,9 @@ const FintechUIHeader = glamorous.header({
   fontSize: '1.5rem',
   padding: '.8rem',
   textTransform: 'uppercase',
-  fontFamily: 'sans-serif',
-  background: colors.headerBackground
+  fontFamily: 'opensans, sans-serif',
+  background: colors.headerBackground,
+  position: 'relative'
 })
 
 FintechUIHeader.propTypes = {

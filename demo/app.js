@@ -35,7 +35,7 @@ class DemoApp extends React.Component {
           getSize={order => order[1]}
           getPrice={order => order[0]}
           getPosition={order => order[2]}
-          style={{maxWidth: 400, height: '100%'}}
+          style={{maxWidth: 400}}
         />
         {/* <OpenOrders /> */}
         {/* <DepthChart /> */}

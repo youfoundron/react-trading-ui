@@ -9,7 +9,10 @@ import * as getters from './defaults/getters'
 // Components
 import FintechUIParent from './components/FintechUIParent'
 import FintechUIHeader from './components/FintechUIHeader'
-import FintechUIContent from './components/FintechUIContent'
+import FintechUIContentWrapper from './components/FintechUIContentWrapper'
+import FintechUIStickyContent from './components/FintechUIStickyContent'
+import FintechUITableHead from './components/FintechUITableHead'
+import FintechUIScrollingContent from './components/FintechUIScrollingContent'
 
 const unsafePropNames = [
   'asks',
@@ -36,13 +39,22 @@ class OrderBook extends React.Component {
   }
 
   render () {
-    const { headerText } = this.props
+    const { headerText, sizeLabel, priceLabel, positionLabel } = this.props
     return (
       <FintechUIParent {...R.omit(unsafePropNames, this.props)}>
         <FintechUIHeader>{headerText}</FintechUIHeader>
-        <FintechUIContent>
-          {/* <Spread onClick={centerSpread} /> */}
-        </FintechUIContent>
+        <FintechUIContentWrapper>
+          <FintechUIStickyContent>
+            <FintechUITableHead>
+              <th>{sizeLabel}</th>
+              <th>{priceLabel}</th>
+              <th>{positionLabel}</th>
+            </FintechUITableHead>
+          </FintechUIStickyContent>
+          <FintechUIScrollingContent>
+            {/* nothing to see here */}
+          </FintechUIScrollingContent>
+        </FintechUIContentWrapper>
       </FintechUIParent>
     )
   }
