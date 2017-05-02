@@ -9,6 +9,23 @@ import {
 } from '../src'
 
 class DemoApp extends React.Component {
+  constructor (props, context) {
+    super(props, context)
+    this.state = { bids: [], asks: [] }
+    this.fetchOrderBook = this.fetchOrderBook.bind(this)
+    // this.fetchInterval = setInterval(this.fetchOrderBook, 12000);
+  }
+
+  fetchOrderBook () {
+    window.fetch('https://api.gdax.com/products/ETH-BTC/book?level=2')
+      .then(resp => resp.json())
+      .then(({ bids, asks }) => this.setState({ bids, asks }))
+  }
+
+  // componentWillUnMount() {
+  //   clearInteval(this.fetchInterval);
+  // }
+
   render () {
     return (
       <div>
