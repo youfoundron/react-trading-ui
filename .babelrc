@@ -1,4 +1,9 @@
 {
   presets: ["es2015", "react"],
-  plugins: ["ramda", "styled-jsx/babel", "glamorous-displayname"]
+  plugins: [
+    "ramda",
+    "styled-jsx/babel",
+    "glamorous-displayname",
+    "transform-object-rest-spread"
+  ]
 }
