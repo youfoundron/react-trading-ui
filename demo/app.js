@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import {
-  // OrderBook,
+  OrderBook
   // OpenOrders,
   // DepthChart,
   // PriceChart,
@@ -28,9 +28,15 @@ class DemoApp extends React.Component {
 
   render () {
     return (
-      <div>
-        <h1>Demo App</h1>
-        {/* <OrderBook /> */}
+      <div className='demo'>
+        <OrderBook
+          bids={this.state.bids}
+          asks={this.state.asks}
+          getSize={order => order[1]}
+          getPrice={order => order[0]}
+          getPosition={order => order[2]}
+          style={{maxWidth: 400, height: '100%'}}
+        />
         {/* <OpenOrders /> */}
         {/* <DepthChart /> */}
         {/* <PriceChart /> */}
