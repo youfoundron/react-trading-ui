@@ -3,6 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 // Defaults
+import * as util from './defaults/util'
 import * as getters from './defaults/getters'
 // import * as renderers from './defaults/renderers'
 
@@ -13,6 +14,7 @@ import FintechUIContentWrapper from './components/FintechUIContentWrapper'
 import FintechUIStickyContent from './components/FintechUIStickyContent'
 import FintechUITableHead from './components/FintechUITableHead'
 import FintechUIScrollingContent from './components/FintechUIScrollingContent'
+import Spinner from './components/Spinner'
 
 const unsafePropNames = [
   'asks',
@@ -52,7 +54,9 @@ class OrderBook extends React.Component {
             </FintechUITableHead>
           </FintechUIStickyContent>
           <FintechUIScrollingContent>
-            {/* nothing to see here */}
+
+            <Spinner hide={util.hasReceivedOrderBook(this.props)} />
+
           </FintechUIScrollingContent>
         </FintechUIContentWrapper>
       </FintechUIParent>
