@@ -79,7 +79,8 @@ class OrderBook extends React.Component {
             {/* ASKS TABLE */}
             <FintechUIOrderTable
               style={{marginTop: '4em'}}
-              {...{showSizeBar, sizeLabel, priceLabel, positionLabel}}
+              showSizeBar={showSizeBar}
+              headerLabels={[sizeLabel, priceLabel, positionLabel]}
             >
               {visibleAsks.map((order, i) =>
                 <FintechUIOrder
@@ -101,7 +102,8 @@ class OrderBook extends React.Component {
             {/* BIDS TABLE */}
             <FintechUIOrderTable
               style={{marginBottom: '6em'}}
-              {...{showSizeBar, sizeLabel, priceLabel, positionLabel}}
+              showSizeBar={showSizeBar}
+              headerLabels={[sizeLabel, priceLabel, positionLabel]}
             >
               {visibleBids.map((order, i) =>
                 <FintechUIOrder
