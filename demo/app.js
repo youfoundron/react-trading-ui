@@ -11,20 +11,24 @@ import {
 class DemoApp extends React.Component {
   constructor (props, context) {
     super(props, context)
-    this.state = { bids: [], asks: [] }
+    this.state = { bids: undefined, asks: undefined }
     this.fetchOrderBook = this.fetchOrderBook.bind(this)
-    // this.fetchInterval = setInterval(this.fetchOrderBook, 12000);
+    // this.fetchInterval = setInterval(this.fetchOrderBook, 12000)
   }
 
   fetchOrderBook () {
-    window.fetch('https://api.gdax.com/products/ETH-BTC/book?level=2')
+    window.fetch('https://api.gdax.com/products/ETH-USD/book?level=2')
       .then(resp => resp.json())
       .then(({ bids, asks }) => this.setState({ bids, asks }))
   }
 
-  // componentWillUnMount() {
-  //   clearInteval(this.fetchInterval);
-  // }
+  componentWillMount () {
+    this.fetchOrderBook()
+  }
+
+  componentWillUnMount () {
+    // window.clearInteval(this.fetchInterval)
+  }
 
   render () {
     return (
@@ -32,18 +36,18 @@ class DemoApp extends React.Component {
         <OrderBook
           bids={this.state.bids}
           asks={this.state.asks}
-          getSize={order => order[1]}
-          getPrice={order => order[0]}
-          getPosition={order => order[2]}
-          style={{maxWidth: 400}}
+          getSize={order => Number(order[1])}
+          getPrice={order => Number(order[0])}
+          onClickOrder={order => console.log(order)}
         />
         {/* <OpenOrders /> */}
         {/* <DepthChart /> */}
         {/* <PriceChart /> */}
         {/* <TradeHistory /> */}
         <style jsx global>{`
+          html { line-height: 1.15em; }
           html, body, #root, .demo { height: 100%; }
-          body { margin: 0; }
+          body { margin: 0; font-family: 'Open Sans', monospace; }
         `}</style>
       </div>
     )
