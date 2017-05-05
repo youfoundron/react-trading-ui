@@ -7,7 +7,8 @@ const demoDist = path.resolve(demoDir, 'dist')
 export default {
   entry: {
     app: path.resolve(demoDir, 'app.js'),
-    html: path.resolve(demoDir, 'index.html')
+    html: path.resolve(demoDir, 'index.html'),
+    favicon: path.resolve(demoDir, 'favicon.ico')
   },
   output: {
     path: demoDist,
@@ -15,7 +16,7 @@ export default {
   },
   module: {
     rules: [
-      makeRule(/\.html$/, 'file-loader?name=[name].[ext]'),
+      makeRule(/\.(html|ico)$/, 'file-loader?name=[name].[ext]'),
       makeRule(/\.jsx?$/, ['react-hot-loader', 'babel-loader'])
     ]
   }
