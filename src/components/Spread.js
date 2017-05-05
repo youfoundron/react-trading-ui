@@ -14,12 +14,8 @@ const SpreadDiv = glamorous.div({
   borderStyle: 'solid',
   fontWeight: 700,
   fontSize: '.8em',
-  '.hide': {
-    display: 'none'
-  },
-  ':hover': {
-    cursor: 'pointer'
-  }
+  '.hide': { display: 'none' },
+  ':hover': { cursor: 'pointer' }
 })
 
 const Spread = ({spread, label, format, ...props}) => (
