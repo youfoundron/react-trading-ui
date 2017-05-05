@@ -10,5 +10,6 @@ export default {
   textLowContrast: '#3B464E',   // normal grey
 
   headerBackground: '#2F3D45',  // med-light grey
-  parentBackground: '#1E2B34'   // darkest grey
+  parentBackground: '#1E2B34',  // dark grey
+  parentHoverBackground: '#15232C' // darkest grey
 }
