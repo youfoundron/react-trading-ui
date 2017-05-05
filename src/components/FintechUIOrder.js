@@ -21,7 +21,10 @@ const FintechUIOrderTableData = glamorous.td({
 
 const FintechUIOrder = ({showSizeBar, side, size, sizeBarMaxWidth, sizeBarMaxSize, sizeBarUnitSize, onClick, order, dataConfigs, ...props}) => {
   return (
-    <FintechUIOrderTableRow {...props} onClick={e => onClick(order, side)}>
+    <FintechUIOrderTableRow {...props} onClick={e => {
+      e.preventDefault()
+      onClick(order, side)
+    }}>
       <FintechUIOrderSizeBar {...{showSizeBar, side, size, sizeBarMaxWidth, sizeBarMaxSize, sizeBarUnitSize}} />
       {dataConfigs.map(({propName = 'data', format, getter, renderer}, i) =>
         <FintechUIOrderTableData key={i}>
