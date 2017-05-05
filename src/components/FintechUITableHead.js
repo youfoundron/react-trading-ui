@@ -7,6 +7,8 @@ import colors from '../defaults/colors'
 const FullWidthTable = glamorous.table({
   width: '100%',
   zIndex: 1,
+  fontSize: '.8em',
+  color: colors.textMedContrast,
   background: colors.parentBackground,
   borderBottom: `.5px solid ${colors.textMedContrast}`
 })
@@ -14,7 +16,7 @@ const FullWidthTable = glamorous.table({
 const FintechUITableHead = ({children, ...props}) => (
   <FullWidthTable {...props}>
     <thead>
-      <tr >
+      <tr>
         {children}
       </tr>
     </thead>
