@@ -4,6 +4,11 @@ export const hasReceivedOrderBook = ({ bids, asks }) =>
   bids.length > 0 &&
   asks.length > 0
 
+export const hasReceivedTrades = ({ trades }) => {
+  console.log({trades})
+  return Array.isArray(trades) && trades.length > 0
+}
+
 export const countTrailingZeroes = numString => {
   let numZeroes = 0
   for (let digit of numString.split('').reverse()) {
