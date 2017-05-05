@@ -15,14 +15,12 @@ const HiddenTableFoot = glamorous.tfoot({
   visibility: 'hidden'
 })
 
-const FintechUIOrderTable = ({showSizeBar, sizeLabel, priceLabel, positionLabel, children, ...props}) => (
+const FintechUIOrderTable = ({showSizeBar, headerLabels, children, ...props}) => (
   <Table {...props}>
     <HiddenTableHead>
       <tr>
         { showSizeBar ? <th /> : null }
-        <th>{sizeLabel}</th>
-        <th>{priceLabel}</th>
-        <th>{positionLabel}</th>
+        { headerLabels.map((label, i) => <th key={i}>{label}</th>) }
       </tr>
     </HiddenTableHead>
     <tbody>
@@ -31,16 +29,21 @@ const FintechUIOrderTable = ({showSizeBar, sizeLabel, priceLabel, positionLabel,
     <HiddenTableFoot>
       <tr>
         { showSizeBar ? <td /> : null }
-        <td>{sizeLabel}</td>
-        <td>{priceLabel}</td>
-        <td>{positionLabel}</td>
+        { headerLabels.map((label, i) => <td key={i}>{label}</td>) }
       </tr>
     </HiddenTableFoot>
   </Table>
 )
 
 FintechUIOrderTable.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
+  showSizeBar: PropTypes.bool,
+  headerLabels: PropTypes.array
+}
+
+FintechUIOrderTable.defaultProps = {
+  showSizeBar: true,
+  headerLabels: []
 }
 
 export default FintechUIOrderTable
