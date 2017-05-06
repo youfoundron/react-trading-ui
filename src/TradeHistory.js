@@ -63,7 +63,7 @@ class TradeHistory extends React.Component {
           <FintechUIScrollingContent>
             {/* TRADE TABLE */}
             <FintechUIOrderTable
-              style={{margin: '1em 0 2em 0'}}
+              style={{marginBottom: '3em'}}
               showSizeBar={showSizeBar}
               headerLabels={[sizeLabel, priceLabel, timeStampLabel]}
             >
