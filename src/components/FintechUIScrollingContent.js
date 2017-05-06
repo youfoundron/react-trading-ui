@@ -21,10 +21,10 @@ const Scroller = glamorous.div({
   '&::-webkit-scrollbar': { display: 'none' }
 })
 
-const FintechUIScrollingContent = ({ref, children, ...props}) => (
+const FintechUIScrollingContent = ({scrollerRef, children, ...props}) => (
   <Container {...props}>
     <Scrollable>;
-      <Scroller ref={ref} id='foo' hidden-scrollbars>
+      <Scroller ref={scrollerRef} hidden-scrollbars>
         {children}
       </Scroller>
     </Scrollable>
