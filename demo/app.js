@@ -16,10 +16,10 @@ class DemoApp extends React.Component {
     this.state = { bids: undefined, asks: undefined, trades: undefined }
     this.fetchOrderBook = this.fetchOrderBook.bind(this)
     this.fetchLatestTrades = this.fetchLatestTrades.bind(this)
-    // this.fetchInterval = setInterval(() => {
-    //   this.fetchOrderBook()
-    //   this.fetchLatestTrades()
-    // }, 12000)
+    this.fetchInterval = setInterval(() => {
+      this.fetchOrderBook()
+      this.fetchLatestTrades()
+    }, 12000)
   }
 
   fetchOrderBook () {
@@ -40,7 +40,7 @@ class DemoApp extends React.Component {
   }
 
   componentWillUnMount () {
-    // window.clearInteval(this.fetchInterval)
+    window.clearInteval(this.fetchInterval)
   }
 
   render () {
