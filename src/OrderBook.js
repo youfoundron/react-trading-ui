@@ -1,5 +1,6 @@
 import R from 'ramda'
 import React from 'react'
+import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 
 // Defaults
@@ -34,12 +35,34 @@ const unsafePropNames = [
 class OrderBook extends React.Component {
   constructor (props, context) {
     super(props, context)
-    this.state = { hasScrolled: false }
+    this.state = { hasOrders: false, hasCentered: false }
+    this.scroller = null
     this.centerSpread = this.centerSpread.bind(this)
+    this.centerSpreadOnResize = this.centerSpreadOnResize.bind(this)
+    window.addEventListener('resize', this.centerSpreadOnResize)
+  }
+
+  componentWillUpdate (nextProps, nextState) {
+    if (!nextState.hasOrders && util.hasReceivedOrderBook(nextProps)) {
+      return this.setState({hasOrders: true})
+    }
+    if (this.scroller && nextState.hasOrders && !nextState.hasCentered) {
+      return this.setState({hasCentered: true}, this.centerSpread)
+    }
+  }
+
+  componentWillUnmount () {
+    window.removeEventListener('resize', this.centerSpreadOnResize)
   }
 
   centerSpread () {
-    console.log('scroll so that spread is centered')
+    this.scroller.scrollTop = (this.scroller.scrollHeight - this.scroller.clientHeight) / 2
+  }
+
+  centerSpreadOnResize () {
+    if (!this.state.hasScrolled) {
+      return this.centerSpread()
+    }
   }
 
   render () {
@@ -52,10 +75,9 @@ class OrderBook extends React.Component {
       renderSize, renderPrice, renderPosition
     } = this.props
     const safeProps = R.omit(unsafePropNames, this.props)
-    const hasOrders = util.hasReceivedOrderBook(this.props)
     const visibleAsks = asks.reverse().slice(0, depth)
     const visibleBids = bids.slice(0, depth)
-    const spread = hasOrders ? getPrice(R.last(visibleAsks)) - getPrice(R.head(visibleBids)) : undefined
+    const spread = this.state.hasOrders ? getPrice(R.last(visibleAsks)) - getPrice(R.head(visibleBids)) : undefined
     const dataConfigs = [
       {propName: 'size', format: sizeFormat, getter: getSize, renderer: renderSize},
       {propName: 'price', format: priceFormat, getter: getPrice, renderer: renderPrice},
@@ -75,7 +97,7 @@ class OrderBook extends React.Component {
               <FintechUITableHeading>{positionLabel}</FintechUITableHeading>
             </FintechUITableHead>
           </FintechUIStickyContent>
-          <FintechUIScrollingContent>
+          <FintechUIScrollingContent scrollerRef={c => { this.scroller = ReactDOM.findDOMNode(c) }} >
             {/* ASKS TABLE */}
             <FintechUIOrderTable
               style={{marginTop: '4em'}}
@@ -100,7 +122,7 @@ class OrderBook extends React.Component {
             {/* SPREAD MARKER */}
             <Spread
               spread={spread}
-              hide={!hasOrders}
+              hide={!this.state.hasOrders}
               label={spreadText}
               format={spreadFormat}
               onClick={this.centerSpread}
@@ -127,7 +149,7 @@ class OrderBook extends React.Component {
               )}
             </FintechUIOrderTable>
             {/* LOADING SPINNER */}
-            <Spinner hide={hasOrders} />
+            <Spinner hide={this.state.hasOrders} />
           </FintechUIScrollingContent>
         </FintechUIContentWrapper>
       </FintechUIParent>
