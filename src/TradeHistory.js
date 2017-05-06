@@ -40,7 +40,6 @@ class TradeHistory extends React.Component {
     } = this.props
     const safeProps = R.omit(unsafePropNames, this.props)
     const hasTrades = util.hasReceivedTrades(this.props)
-    console.log({hasTrades, trades})
     const visibleTrades = trades.slice(0, length)
     const dataConfigs = [
       {propName: 'size', format: sizeFormat, getter: getSize, renderer: renderSize},
