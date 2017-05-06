@@ -6,7 +6,7 @@ const demoDist = path.resolve(demoDir, 'dist')
 
 export default {
   entry: {
-    app: path.resolve(demoDir, 'app.js'),
+    app: path.resolve(demoDir, 'index.js'),
     html: path.resolve(demoDir, 'index.html'),
     favicon: path.resolve(demoDir, 'favicon.ico')
   },

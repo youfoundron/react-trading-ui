@@ -1,14 +1,13 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import {
   OrderBook,
   // OpenOrders,
   // DepthChart,
   // PriceChart,
   TradeHistory
-} from '../src'
+} from '../../src'
 
-import colors from '../src/defaults/colors'
+import colors from '../../src/defaults/colors'
 
 class DemoApp extends React.Component {
   constructor (props, context) {
@@ -81,7 +80,4 @@ class DemoApp extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <DemoApp />,
-  document.getElementById('root')
-)
+export default DemoApp
