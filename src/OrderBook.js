@@ -98,7 +98,13 @@ class OrderBook extends React.Component {
               )}
             </FintechUIOrderTable>
             {/* SPREAD MARKER */}
-            <Spread spread={spread} label={spreadText} format={spreadFormat} hide={!hasOrders} />
+            <Spread
+              spread={spread}
+              hide={!hasOrders}
+              label={spreadText}
+              format={spreadFormat}
+              onClick={this.centerSpread}
+            />
             {/* BIDS TABLE */}
             <FintechUIOrderTable
               style={{marginBottom: '6em'}}
