@@ -122,7 +122,7 @@ class OrderBook extends React.Component {
             {/* SPREAD MARKER */}
             <Spread
               spread={spread}
-              hide={!this.state.hasOrders}
+              className={!this.state.hasOrders ? 'hide' : ''}
               label={spreadText}
               format={spreadFormat}
               onClick={this.centerSpread}
