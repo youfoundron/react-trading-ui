@@ -21,28 +21,15 @@ const Scroller = glamorous.div({
   '&::-webkit-scrollbar': { display: 'none' }
 })
 
-class FintechUIScrollingContent extends React.Component {
-  constructor (props, context) {
-    super(props, context)
-    this.handleScroll = this.handleScroll.bind(this)
-  }
-
-  handleScroll () {
-    console.log('scrolling')
-  }
-
-  render () {
-    return (
-      <Container {...this.props}>
-        <Scrollable>
-          <Scroller onsSroll={this.handleScroll} hidden-scrollbars>
-            {this.props.children}
-          </Scroller>
-        </Scrollable>
-      </Container>
-    )
-  }
-}
+const FintechUIScrollingContent = ({ref, children, ...props}) => (
+  <Container {...props}>
+    <Scrollable>;
+      <Scroller ref={ref} id='foo' hidden-scrollbars>
+        {children}
+      </Scroller>
+    </Scrollable>
+  </Container>
+)
 
 FintechUIScrollingContent.propTypes = {
   children: PropTypes.node.isRequired
