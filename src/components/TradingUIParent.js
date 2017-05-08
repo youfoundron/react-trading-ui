@@ -3,17 +3,17 @@ import glamorous from 'glamorous'
 
 import colors from '../defaults/colors'
 
-const FintechUIStickyContent = glamorous.div({
-  top: 0,
-  left: 0,
-  zIndex: 1,
+const TradingUIParent = glamorous.div({
   width: '100%',
+  height: '100%',
+  overflow: 'hidden',
   position: 'absolute',
+  color: colors.textHighContrast,
   background: colors.parentBackground
 })
 
-FintechUIStickyContent.propTypes = {
+TradingUIParent.propTypes = {
   children: PropTypes.node.isRequired
 }
 
-export default FintechUIStickyContent
+export default TradingUIParent

@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import glamorous from 'glamorous'
 
 import colors from '../defaults/colors'
-import FintechUIOrderSizeBar from './FintechUIOrderSizeBar'
+import TradingUIOrderSizeBar from './TradingUIOrderSizeBar'
 
-const FintechUIOrderTableRow = glamorous.tr({
+const TradingUIOrderTableRow = glamorous.tr({
   fontSize: '.8em',
   fontWeight: 700,
   ':hover': {
@@ -14,37 +14,37 @@ const FintechUIOrderTableRow = glamorous.tr({
   }
 })
 
-const FintechUIOrderTableData = glamorous.td({
+const TradingUIOrderTableData = glamorous.td({
   textAlign: 'right',
   transform: 'translateX(-10%)'
 })
 
-const FintechUIOrder = ({showSizeBar, side, size, sizeBarMaxWidth, sizeBarMaxSize, sizeBarUnitSize, onClick, order, dataConfigs, ...props}) => {
+const TradingUIOrder = ({showSizeBar, side, size, sizeBarMaxWidth, sizeBarMaxSize, sizeBarUnitSize, onClick, order, dataConfigs, ...props}) => {
   return (
-    <FintechUIOrderTableRow {...props} onClick={e => {
+    <TradingUIOrderTableRow {...props} onClick={e => {
       e.preventDefault()
       onClick(order, side)
     }}>
-      <FintechUIOrderSizeBar {...{showSizeBar, side, size, sizeBarMaxWidth, sizeBarMaxSize, sizeBarUnitSize}} />
+      <TradingUIOrderSizeBar {...{showSizeBar, side, size, sizeBarMaxWidth, sizeBarMaxSize, sizeBarUnitSize}} />
       {dataConfigs.map(({propName = 'data', format, getter, renderer}, i) =>
-        <FintechUIOrderTableData key={i}>
+        <TradingUIOrderTableData key={i}>
           {renderer({ side, format, [propName]: getter(order) })}
-        </FintechUIOrderTableData>
+        </TradingUIOrderTableData>
       )}
-    </FintechUIOrderTableRow>
+    </TradingUIOrderTableRow>
   )
 }
 
-FintechUIOrder.propTypes = {
+TradingUIOrder.propTypes = {
   side: PropTypes.oneOf(['buy', 'sell']),
   showSizeBar: PropTypes.bool,
   dataConfigs: PropTypes.arrayOf(PropTypes.object)
 }
 
-FintechUIOrder.defaultProps = {
+TradingUIOrder.defaultProps = {
   side: 'buy',
   showSizeBar: true,
   dataConfigs: []
 }
 
-export default FintechUIOrder
+export default TradingUIOrder

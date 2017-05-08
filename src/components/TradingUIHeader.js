@@ -3,7 +3,7 @@ import glamorous from 'glamorous'
 
 import colors from '../defaults/colors'
 
-const FintechUIHeader = glamorous.header({
+const TradingUIHeader = glamorous.header({
   fontSize: '1.5rem',
   padding: '.8rem',
   textTransform: 'uppercase',
@@ -12,8 +12,8 @@ const FintechUIHeader = glamorous.header({
   fontWeight: 'bold'
 })
 
-FintechUIHeader.propTypes = {
+TradingUIHeader.propTypes = {
   children: PropTypes.node.isRequired
 }
 
-export default FintechUIHeader
+export default TradingUIHeader

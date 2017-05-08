@@ -5,15 +5,15 @@ import PropTypes from 'prop-types'
 import * as util from './defaults/util'
 import * as getters from './defaults/getters'
 
-import FintechUIParent from './components/FintechUIParent'
-import FintechUIHeader from './components/FintechUIHeader'
-import FintechUIContentWrapper from './components/FintechUIContentWrapper'
-import FintechUIStickyContent from './components/FintechUIStickyContent'
-import FintechUITableHead from './components/FintechUITableHead'
-import FintechUITableHeading from './components/FintechUITableHeading'
-import FintechUIScrollingContent from './components/FintechUIScrollingContent'
-import FintechUIOrderTable from './components/FintechUIOrderTable'
-import FintechUIOrder from './components/FintechUIOrder'
+import TradingUIParent from './components/TradingUIParent'
+import TradingUIHeader from './components/TradingUIHeader'
+import TradingUIContentWrapper from './components/TradingUIContentWrapper'
+import TradingUIStickyContent from './components/TradingUIStickyContent'
+import TradingUITableHead from './components/TradingUITableHead'
+import TradingUITableHeading from './components/TradingUITableHeading'
+import TradingUIScrollingContent from './components/TradingUIScrollingContent'
+import TradingUIOrderTable from './components/TradingUIOrderTable'
+import TradingUIOrder from './components/TradingUIOrder'
 import PrettySize from './components/PrettySize'
 import PrettyPrice from './components/PrettyPrice'
 import PrettyTimeStamp from './components/PrettyTimeStamp'
@@ -47,28 +47,28 @@ class TradeHistory extends React.Component {
       {propName: 'timeStamp', format: timeStampFormat, getter: getTimeStamp, renderer: renderTimeStamp}
     ]
     return (
-      <FintechUIParent {...safeProps}>
+      <TradingUIParent {...safeProps}>
         {/* UI HEADER */}
-        <FintechUIHeader>{headerText}</FintechUIHeader>
-        <FintechUIContentWrapper>
-          <FintechUIStickyContent>
+        <TradingUIHeader>{headerText}</TradingUIHeader>
+        <TradingUIContentWrapper>
+          <TradingUIStickyContent>
             {/* TABLE COLUMN HEADERS */}
-            <FintechUITableHead>
-              {showSizeBar ? <FintechUITableHeading style={{width: sizeBarMaxWidth}} /> : null}
-              <FintechUITableHeading>{sizeLabel}</FintechUITableHeading>
-              <FintechUITableHeading>{priceLabel}</FintechUITableHeading>
-              <FintechUITableHeading>{timeStampLabel}</FintechUITableHeading>
-            </FintechUITableHead>
-          </FintechUIStickyContent>
-          <FintechUIScrollingContent>
+            <TradingUITableHead>
+              {showSizeBar ? <TradingUITableHeading style={{width: sizeBarMaxWidth}} /> : null}
+              <TradingUITableHeading>{sizeLabel}</TradingUITableHeading>
+              <TradingUITableHeading>{priceLabel}</TradingUITableHeading>
+              <TradingUITableHeading>{timeStampLabel}</TradingUITableHeading>
+            </TradingUITableHead>
+          </TradingUIStickyContent>
+          <TradingUIScrollingContent>
             {/* TRADE TABLE */}
-            <FintechUIOrderTable
+            <TradingUIOrderTable
               style={{marginBottom: '3em'}}
               showSizeBar={showSizeBar}
               headerLabels={[sizeLabel, priceLabel, timeStampLabel]}
             >
               {visibleTrades.map((trade, i) =>
-                <FintechUIOrder
+                <TradingUIOrder
                   key={i}
                   order={trade}
                   side={getSide(trade)}
@@ -81,11 +81,11 @@ class TradeHistory extends React.Component {
                   sizeBarMaxWidth={sizeBarMaxWidth}
                 />
               )}
-            </FintechUIOrderTable>
+            </TradingUIOrderTable>
             <Spinner hide={hasTrades} />
-          </FintechUIScrollingContent>
-        </FintechUIContentWrapper>
-      </FintechUIParent>
+          </TradingUIScrollingContent>
+        </TradingUIContentWrapper>
+      </TradingUIParent>
     )
   }
 }

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import glamorous from 'glamorous'
 
-const FintechUIContentWrapper = glamorous.div({
+const TradingUIContentWrapper = glamorous.div({
   left: 0,
   right: 0,
   width: '100%',
@@ -10,8 +10,8 @@ const FintechUIContentWrapper = glamorous.div({
   position: 'absolute'
 })
 
-FintechUIContentWrapper.propTypes = {
+TradingUIContentWrapper.propTypes = {
   children: PropTypes.node.isRequired
 }
 
-export default FintechUIContentWrapper
+export default TradingUIContentWrapper

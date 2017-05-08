@@ -1,7 +1,7 @@
 import glamorous from 'glamorous'
 import colors from '../defaults/colors'
 
-const FintechUIOrderSizeBar = glamorous.td({
+const TradingUIOrderSizeBar = glamorous.td({
   padding: 0,
   boxSizing: 'border-box'
 }, ({showSizeBar, side, size, sizeBarMaxWidth, sizeBarMaxSize, sizeBarUnitSize}) => {
@@ -17,4 +17,4 @@ const FintechUIOrderSizeBar = glamorous.td({
   }
 })
 
-export default FintechUIOrderSizeBar
+export default TradingUIOrderSizeBar

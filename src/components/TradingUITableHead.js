@@ -13,7 +13,7 @@ const FullWidthTable = glamorous.table({
   borderBottom: `.5px solid ${colors.textMedContrast}`
 })
 
-const FintechUITableHead = ({children, ...props}) => (
+const TradingUITableHead = ({children, ...props}) => (
   <FullWidthTable {...props}>
     <thead>
       <tr>
@@ -23,8 +23,8 @@ const FintechUITableHead = ({children, ...props}) => (
   </FullWidthTable>
 )
 
-FintechUITableHead.propTypes = {
+TradingUITableHead.propTypes = {
   children: PropTypes.node.isRequired
 }
 
-export default FintechUITableHead
+export default TradingUITableHead

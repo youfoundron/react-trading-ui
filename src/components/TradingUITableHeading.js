@@ -1,9 +1,9 @@
 import glamorous from 'glamorous'
 
-const FintechUITableHeading = glamorous.th({
+const TradingUITableHeading = glamorous.th({
   fontWeight: 400,
   textAlign: 'right',
   transform: 'translateX(-10%)'
 })
 
-export default FintechUITableHeading
+export default TradingUITableHeading
