@@ -1,5 +1,7 @@
 # React Trading UI
-A component library for trading applications.
+A component library for trading applications.  
+
+<img width="600" alt="react-trading-ui" src="https://cloud.githubusercontent.com/assets/4658359/25865418/759b0316-34b8-11e7-8592-4bb1b4d1e5f9.png">
 
 ### Feature Checklist
 * **OrderBook**
