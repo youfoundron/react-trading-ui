@@ -25,5 +25,5 @@ The OrderBook component is used to list a product's buy and sell orders, organiz
 | `positionRenderer` | function | Function that renders the position of an order. |
 | `showSizeBar` | boolean | Flag for whether or not to show the size bar. |
 | `sizeBarMaxSize` | number | Market size value for which the size bar is at full width. |
-| `sizeBarMaxWidth` | number | Pixel value for the max width of the sizebar. |
+| `sizeBarMaxWidth` | number | Pixel value for the max width of the size bar. |
 | `sizeBarUnitSize` | number | Quantity of market size value for which the size bar increments in width. |
