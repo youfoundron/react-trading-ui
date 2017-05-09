@@ -3,27 +3,12 @@ A component library for trading applications.
 
 <img width="600" alt="react-trading-ui" src="https://cloud.githubusercontent.com/assets/4658359/25865418/759b0316-34b8-11e7-8592-4bb1b4d1e5f9.png">
 
-### Feature Checklist
-* **OrderBook**
-  - [x] Component
-  - [x] Demo Usage
-  - [ ] Documentation
-  - [ ] Test Coverage
-* **TradeHistory**
-  - [x] Component
-  - [x] Demo Usage
-  - [ ] Documentation
-  - [ ] Test Coverage
-* **DepthChart**
-  - [ ] Component
-  - [ ] Demo Usage
-  - [ ] Documentation
-  - [ ] Test Coverage
-* **PriceChart**
-  - [ ] Component
-  - [ ] Demo Usage
-  - [ ] Documentation
-  - [ ] Test Coverage
+## Documentation
+* [Getting Started](/docs/GettingStarted.md)
+* [Order Book](/docs/OrderBook.md)
+* [Trade History](/docs/TradeHistory.md)
+* ~~[Depth Chart](/docs/DepthChart.md)~~
+* ~~[Price Chart](/docs/PriceChart.md)~~
 
 ## Demo & Examples
 Live demo: _coming soon..._
