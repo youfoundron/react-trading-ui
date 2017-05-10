@@ -9,3 +9,8 @@ export const fetchTrades = (productId = 'ETH-USD') => ({
   type: types.TRADES_REQUEST,
   payload: { productId }
 })
+
+export const connectFeed = (productIds = ['ETH-USD']) => ({
+  type: types.FEED_CONNECT,
+  payload: { productIds }
+})
