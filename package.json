@@ -3,7 +3,13 @@
   "version": "0.1.2",
   "description": "A set of React components for trading applications",
   "keywords": [
-    "react", "order book", "component", "trading", "market", "depth", "chart"
+    "react",
+    "order book",
+    "component",
+    "trading",
+    "market",
+    "depth",
+    "chart"
   ],
   "main": "lib/index.js",
   "license": "GPL-3.0",
@@ -55,8 +61,10 @@
     "react-test-renderer": "^15.5.4",
     "redux": "^3.6.0",
     "redux-devtools-extension": "^2.13.2",
+    "redux-immutable": "^4.0.0",
     "redux-logger": "^3.0.1",
     "redux-saga": "^0.15.3",
+    "reselect": "^3.0.0",
     "rimraf": "^2.6.1",
     "scope-types": "^1.1.2",
     "snazzy": "^7.0.0",
