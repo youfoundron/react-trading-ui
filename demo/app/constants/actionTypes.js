@@ -7,8 +7,7 @@ const appTypes = [
   'TRADES_REQUEST',
   'TRADES_SUCCESS',
   'TRADES_FAILURE',
-  'FEED_CONNECT',
-  'FEED_SET_SOCKET'
+  'FEED_CONNECT'
 ]
 
 const feedTypes = [
