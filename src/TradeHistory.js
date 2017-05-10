@@ -91,7 +91,7 @@ class TradeHistory extends React.Component {
 }
 
 TradeHistory.propTypes = {
-  trades: PropTypes.array,
+  trades: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   length: PropTypes.number,
   sizeBarMaxWidth: PropTypes.number,
   sizeBarMaxSize: PropTypes.number,

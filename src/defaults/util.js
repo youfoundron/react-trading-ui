@@ -1,11 +1,17 @@
+const isArrayOrObject = coll =>
+  Array.isArray(coll) || typeof coll === 'object'
+
+const lengthOrSize = coll =>
+  coll.length || coll.size
+
 export const hasReceivedOrderBook = ({ bids, asks }) =>
-  Array.isArray(bids) &&
-  Array.isArray(asks) &&
-  bids.length > 0 &&
-  asks.length > 0
+  isArrayOrObject(bids) &&
+  isArrayOrObject(asks) &&
+  lengthOrSize(bids) > 0 &&
+  lengthOrSize(asks) > 0
 
 export const hasReceivedTrades = ({ trades }) =>
-  Array.isArray(trades) && trades.length > 0
+  isArrayOrObject(trades) && lengthOrSize(trades) > 0
 
 export const countTrailingZeroes = numString => {
   let numZeroes = 0

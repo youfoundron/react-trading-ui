@@ -23,6 +23,10 @@ import PrettyPosition from './components/PrettyPosition'
 import Spread from './components/Spread'
 import Spinner from './components/Spinner'
 
+// Normalize Array to have first and last methods
+Array.prototype.first = function () { return this[0] } // eslint-disable-line no-extend-native
+Array.prototype.last = function () { return this[this.length - 1] } // eslint-disable-line no-extend-native
+
 const unsafePropNames = [
   'asks', 'bids', 'depth', 'headerText', 'spreadText', 'showSizeBar',
   'sizeLabel', 'priceLabel', 'positionLabel', 'onClickOrder',
@@ -77,7 +81,7 @@ class OrderBook extends React.Component {
     const safeProps = R.omit(unsafePropNames, this.props)
     const visibleAsks = asks.reverse().slice(0, depth)
     const visibleBids = bids.slice(0, depth)
-    const spread = this.state.hasOrders ? getPrice(R.last(visibleAsks)) - getPrice(R.head(visibleBids)) : undefined
+    const spread = this.state.hasOrders ? getPrice(visibleAsks.last()) - getPrice(visibleBids.first()) : undefined
     const dataConfigs = [
       {propName: 'size', format: sizeFormat, getter: getSize, renderer: renderSize},
       {propName: 'price', format: priceFormat, getter: getPrice, renderer: renderPrice},
@@ -158,8 +162,8 @@ class OrderBook extends React.Component {
 }
 
 OrderBook.propTypes = {
-  asks: PropTypes.array,
-  bids: PropTypes.array,
+  asks: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+  bids: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   depth: PropTypes.number,
   sizeBarMaxWidth: PropTypes.number,
   sizeBarMaxSize: PropTypes.number,
