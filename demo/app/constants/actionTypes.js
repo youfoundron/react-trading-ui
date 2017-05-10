@@ -1,14 +1,24 @@
 import scopeTypes from 'scope-types'
 
-const types = [
+const appTypes = [
   'BOOK_REQUEST',
   'BOOK_SUCCESS',
   'BOOK_FAILURE',
   'TRADES_REQUEST',
   'TRADES_SUCCESS',
-  'TRADES_FAILURE'
+  'TRADES_FAILURE',
+  'FEED_CONNECT',
+  'FEED_SET_SOCKET'
+]
+
+const feedTypes = [
+  'SOCKET_OPEN',
+  'SOCKET_CLOSE',
+  'SOCKET_ERROR',
+  'SOCKET_MESSAGE'
 ]
 
 export default {
-  ...scopeTypes(types)
+  ...scopeTypes(appTypes),
+  ...scopeTypes(feedTypes, 'Feed')
 }
