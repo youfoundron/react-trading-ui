@@ -6,7 +6,8 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 
 import rootReducer from '../reducers'
 import initialState from './initialState'
-import sagas from '../constants/sagas'
+import rootSaga from '../sagas'
+import types from '../constants/actionTypes'
 import * as actionCreators from '../constants/actionCreators'
 
 // middleware helpers
@@ -18,16 +19,21 @@ const actionSanitizer = action => ({
     ? String(action.type).match(typeRegEx)[1]
     : action.type
 })
+const predicate = (state, action) =>
+  action.type !== types.SOCKET_MESSAGE
 
 // use redux devtools enhancer
 const composeEnhancers = composeWithDevTools({
+  predicate,
   actionCreators,
   actionSanitizer,
-  serialize: { immutable }
+  serialize: { immutable },
+  actionsBlackList: types.SOCKET_MESSAGE
 })
 
 // create and apply middlewares
 const loggerMiddleware = createLogger({
+  predicate,
   diff: true,
   collapsed: true,
   stateTransformer: stateSanitizer,
@@ -43,6 +49,6 @@ const middleware = composeEnhancers(
 const store = createStore(rootReducer, initialState, middleware)
 
 // run sagas
-sagaMiddleware.run(sagas)
+sagaMiddleware.run(rootSaga)
 
 export default store
