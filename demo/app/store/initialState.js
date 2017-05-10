@@ -1,8 +1,8 @@
-import { Map } from 'immutable'
+import { fromJS } from 'immutable'
 
-export default Map({
+export default fromJS({
   error: '',
-  book: Map({
+  book: {
     asks: [],
     bids: []
   }),
