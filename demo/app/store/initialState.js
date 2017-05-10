@@ -2,7 +2,9 @@ import { Map } from 'immutable'
 
 export default Map({
   error: '',
-  asks: [],
-  bids: [],
+  book: Map({
+    asks: [],
+    bids: []
+  }),
   trades: []
 })
