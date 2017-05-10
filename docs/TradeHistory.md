@@ -16,7 +16,7 @@ The TradeHistory component is used to list a product's most recent trades.
 | `timeStampFormat` | string | [Moment.js](https://momentjs.com/docs/#/displaying/format/) format string for a trade's timeStamp value. |
 | `getSize` | function | Function to get the size value from a trade. |
 | `getPrice` | function | Function to get the price value from a trade. |
-| `getPosition` | function | Function to get the timeStamp value from a trade. |
+| `getTimeStamp` | function | Function to get the timeStamp value from a trade. |
 | `sizeRenderer` | function | Function that renders the size of a trade. |
 | `priceRenderer` | function | Function that renders the price of a trade. |
 | `timeStampRenderer` | function | Function that renders the timeStamp of a trade. |
