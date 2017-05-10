@@ -1,9 +1,9 @@
 # Getting Started with `react-trading-ui`
 `react-trading-ui` primarily consists of four components:
-1. [OrderBook](/OrderBook.md)
-2. [TradeHistory](/TradeHistory.md)
-3. ~~[DepthChart](/DepthChart.md)~~
-4. ~~[PriceChart](/PriceChart.md)~~
+1. [OrderBook](/docs/OrderBook.md)
+2. [TradeHistory](/docs/TradeHistory.md)
+3. ~~[DepthChart](/docs/DepthChart.md)~~
+4. ~~[PriceChart](/docs/PriceChart.md)~~
 
 ## Import Guide
 Each component is a named export of `react-trading-ui`.  
