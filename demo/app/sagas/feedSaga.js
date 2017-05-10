@@ -7,7 +7,6 @@ const connectFeed = ({productIds}) => eventChannel(
   emitter => {
     // subscribe
     const feed = createFeed()
-    emitter({type: types.FEED_SET_SOCKET, payload: feed})
 
     feed.onopen = e => {
       emitter({
@@ -34,7 +33,7 @@ const connectFeed = ({productIds}) => eventChannel(
     })
 
     // unsubscribe
-    return () => feed.close()
+    return feed.close
   }
 )
 
