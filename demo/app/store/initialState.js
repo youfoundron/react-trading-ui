@@ -6,5 +6,6 @@ export default Map({
     asks: [],
     bids: []
   }),
-  trades: []
+  trades: [],
+  feedStatus: 3 // 0 = CONNECTING, 1 = OPEN, 2 = CLOSING, 3 = CLOSED
 })
