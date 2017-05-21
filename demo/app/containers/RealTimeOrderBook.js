@@ -22,8 +22,6 @@ class RealTimeOrderBook extends React.Component {
       <OrderBook
         asks={this.props.asks}
         bids={this.props.bids}
-        getSize={order => Number(order[1])}
-        getPrice={order => Number(order[0])}
         onClickOrder={order => console.log(order)}
         style={orderBookStyles}
       />
