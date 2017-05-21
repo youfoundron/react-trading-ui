@@ -108,9 +108,9 @@ class OrderBook extends React.Component {
               showSizeBar={showSizeBar}
               headerLabels={[sizeLabel, priceLabel, positionLabel]}
             >
-              {visibleAsks.map((order, i) =>
+              {visibleAsks.map(order =>
                 <TradingUIOrder
-                  key={i}
+                  key={getPrice(order)}
                   side='sell'
                   order={order}
                   size={getSize(order)}
@@ -137,9 +137,9 @@ class OrderBook extends React.Component {
               showSizeBar={showSizeBar}
               headerLabels={[sizeLabel, priceLabel, positionLabel]}
             >
-              {visibleBids.map((order, i) =>
+              {visibleBids.map(order =>
                 <TradingUIOrder
-                  key={i}
+                  key={getPrice(order)}
                   side='buy'
                   order={order}
                   size={getSize(order)}
