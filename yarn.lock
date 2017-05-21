@@ -2484,9 +2484,13 @@ ignore@^3.0.11, ignore@^3.0.9, ignore@^3.2.0:
   version "3.2.7"
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-3.2.7.tgz#4810ca5f1d8eca5595213a34b94f2eb4ed926bbd"
 
-immutable@^3.8.1:
-  version "3.8.1"
-  resolved "https://registry.yarnpkg.com/immutable/-/immutable-3.8.1.tgz#200807f11ab0f72710ea485542de088075f68cd2"
+immutable-sorted-map@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/immutable-sorted-map/-/immutable-sorted-map-0.2.2.tgz#deda9536131a4ecef437ee831e09c5196fce9b49"
+
+immutable@4.0.0-rc.2:
+  version "4.0.0-rc.2"
+  resolved "https://registry.yarnpkg.com/immutable/-/immutable-4.0.0-rc.2.tgz#fdd0948aae728fda2306a02f72bb73e1773432d1"
 
 imurmurhash@^0.1.4:
   version "0.1.4"
