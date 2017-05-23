@@ -27,8 +27,7 @@
     "test": "jest"
   },
   "pre-commit": [
-    "lint",
-    "test"
+    "lint"
   ],
   "dependencies": {
     "glamor": "^2.20.24",
