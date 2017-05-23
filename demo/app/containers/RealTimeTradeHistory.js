@@ -13,6 +13,7 @@ class RealTimeTradeHistory extends React.Component {
     return (
       <TradeHistory
         trades={this.props.trades}
+        getTimeStamp={order => order.time}
         style={{
           right: 0,
           maxWidth: '50%',
