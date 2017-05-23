@@ -20,6 +20,7 @@ const actionSanitizer = action => ({
     : action.type
 })
 const predicate = (state, action) =>
+  (action.payload && action.payload.type === 'match') ||
   action.type !== types.SOCKET_MESSAGE
 
 // use redux devtools enhancer
