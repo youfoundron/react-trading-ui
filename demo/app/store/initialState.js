@@ -4,8 +4,8 @@ const comparePrice = (currKey, nextKey) => {
   const currPrice = Number(currKey)
   const nextPrice = Number(nextKey)
   if (currPrice < nextPrice) return -1
-  if (currPrice > nextPrice) return 1
-  return 0
+  else if (currPrice > nextPrice) return 1
+  else return 0
 }
 
 export default Map({
@@ -13,8 +13,7 @@ export default Map({
   book: Map({
     asks: new SortedMap({}, comparePrice),
     bids: new SortedMap({}, comparePrice),
-    getSize: book => book.count(),
-    snapshot: null,
+    hasReceivedSnapshot: false,
     queuedMessages: List([])
   }),
   trades: List([]),
