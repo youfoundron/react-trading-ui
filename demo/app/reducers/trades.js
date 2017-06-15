@@ -15,13 +15,13 @@ const sanitizeMessage = pick([
 
 export default (state = defaultState, action) => {
   switch (action.type) {
-    case types.TRADES_SUCCESS :
-      return List(action.payload)
-
-    case types.SOCKET_MESSAGE :
-      return action.payload.type === 'match'
-        ? state.unshift(sanitizeMessage(action.payload))
-        : state
+    // case types.TRADES_SUCCESS :
+    //   return List(action.payload)
+    //
+    // case types.SOCKET_MESSAGE :
+    //   return action.payload.type === 'match'
+    //     ? state.unshift(sanitizeMessage(action.payload))
+    //     : state
 
     default:
       return state

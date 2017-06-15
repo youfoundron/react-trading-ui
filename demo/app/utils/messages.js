@@ -1,63 +1,102 @@
 /* eslint-disable eqeqeq, camelcase */
-const getBookKey = side => side === 'buy' ? 'bids' : 'asks'
-const orderIsEmpty = ({size}) => size == 0
-const isMarketOrder = ({price}) => price === null
+import { Map } from 'immutable-sorted'
 
-const keyPathFactory = ({side, price}) => (
-  [getBookKey(side), price]
+const getSnapshotOrderPrice = order => order[0]
+const getSnapshotOrderSize = order => order[1]
+const getSnapshotOrderId = order => order[2]
+
+const getEntriesKey = side => side === 'buy' ? 'bids' : 'asks'
+const isMarketOrder = message => message.price == null
+const isEmptyEntry = entry => (
+  !(entry
+    .get('orderSizesById')
+    .reduce((totalSize, orderSize) => totalSize + Number(orderSize), 0)
+  )
 )
 
-const notSetValueFactory = ({price}) => ({
-  price,
-  size: '0.00'
+const keyPathFactory = ({side, price, order_id, maker_order_id}) => (
+  [getEntriesKey(side), price, 'orderSizesById', order_id || maker_order_id]
+)
+
+const bookEntryFactory = order => Map({
+  price: getSnapshotOrderPrice(order)
 })
 
-const updaterFactory = sizeChange => order => {
-  order.size = String(Number(order.size) + Number(sizeChange))
-  return order
-}
+const bookEntryUpdaterFactory = order => entry => (
+  entry
+    .set('price', getSnapshotOrderPrice(order))
+    .setIn(
+      ['orderSizesById', getSnapshotOrderId(order)],
+      getSnapshotOrderSize(order)
+    )
+)
+
+const notSetValueFactory = message => Map({
+  price: message.price,
+  orderSizesById: Map()
+})
+
+const updaterFactory = (message, sizeChange) => entry => (
+  entry
+    .set('price', message.price)
+    .updateIn(
+      ['orderSizesById', message.order_id || message.maker_order_id],
+      size => String(Number(size) + Number(sizeChange))
+    )
+)
 
 const seedBook = payload => prevBook => payload.reduce(
-  (newBook, [price, size]) =>
-    newBook.set(price, {price, size})
-  , prevBook
+  (newBook, snapshotOrder) => {
+    const key = getSnapshotOrderPrice(snapshotOrder)
+    const notSetValue = bookEntryFactory(snapshotOrder)
+    const updater = bookEntryUpdaterFactory(snapshotOrder)
+    return newBook.update(key, notSetValue, updater)
+  }, prevBook
 )
 
 // https://docs.gdax.com/#open
-const applyOpenMessage = (state, order) => {
-  const keyPath = keyPathFactory(order)
-  const notSetValue = notSetValueFactory(order)
-  const updater = updaterFactory(order.remaining_size)
-  return state.updateIn(keyPath, notSetValue, updater)
+const applyOpenMessage = (state, message) => {
+  const keyPath = keyPathFactory(message)
+  const notSetValue = notSetValueFactory(message)
+  return state.setIn(keyPath, notSetValue, message.remaining_size)
 }
 
 // https://docs.gdax.com/#done
-const applyDoneMessage = (state, order) => {
-  // if (isMarketOrder(order)) return state
-  // const keyPath = keyPathFactory(order)
-  // const notSetValue = notSetValueFactory(order)
-  // const updater = updaterFactory(order.remaining_size) // remaining_size
-  return state
+const applyDoneMessage = (state, message) => {
+  if (isMarketOrder(message)) return state
+  const keyPath = keyPathFactory(message)
+  const notSetValue = notSetValueFactory(message)
+  const resultState = message.remaining_size == 0
+    ? state.deleteIn(keyPath)
+    : state.setIn(keyPath, notSetValue, message.remaining_size)
+  const resultEntry = resultState.get(message.price) || notSetValue
+  return isEmptyEntry(resultEntry)
+    ? state.delete(message.price)
+    : resultState
 }
 
 // https://docs.gdax.com/#match
-const applyMatchMessage = (state, order) => {
-  const keyPath = keyPathFactory(order)
-  const notSetValue = notSetValueFactory(order)
-  const updater = updaterFactory(-order.size)
-  const updatedOrder = updater(state.getIn(keyPath, notSetValue))
-  return orderIsEmpty(updatedOrder)
+const applyMatchMessage = (state, message) => {
+  const key = message.price
+  const keyPath = keyPathFactory(message)
+  const notSetValue = notSetValueFactory(message)
+  const updater = updaterFactory(message, -message.size)
+  const resultState = message.size == state.getIn(keyPath)
     ? state.deleteIn(keyPath)
-    : state.setIn(keyPath, updatedOrder)
+    : state.update(key, Map(), updater)
+  const resultEntry = resultState.get(message.price) || notSetValue
+  return isEmptyEntry(resultEntry)
+    ? state.delete(message.price)
+    : resultState
 }
 
 // https://docs.gdax.com/#change
-const applyChangeMessage = (state, order) => {
-  if (isMarketOrder(order)) return state
-  const keyPath = keyPathFactory(order)
-  const notSetValue = notSetValueFactory(order)
-  const updater = updaterFactory(order.new_funds - order.old_funds)
-  return state.updateIn(keyPath, notSetValue, updater)
+const applyChangeMessage = (state, message) => {
+  if (isMarketOrder(message)) return state
+  const key = message.price
+  // const notSetValue = notSetValueFactory(message)
+  const updater = updaterFactory(message, message.new_size - message.old_size)
+  return state.update(key, updater)
 }
 
 export const applyMessage = (state, message) => {
