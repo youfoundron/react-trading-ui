@@ -1,6 +1,10 @@
 # React Trading UI
 A component library for trading applications.  
 
+Disclaimer:  
+There are some real performance issues with this right now and it is likely going to freeze up if you are trying to maintain a full order book in real-time.  
+For level books or for just polling a full order book it should be more stable.
+
 <img width="600" alt="react-trading-ui" src="https://cloud.githubusercontent.com/assets/4658359/25865418/759b0316-34b8-11e7-8592-4bb1b4d1e5f9.png">
 
 ## Documentation
