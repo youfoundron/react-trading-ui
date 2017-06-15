@@ -64,7 +64,7 @@ class OrderBook extends React.Component {
   }
 
   centerSpreadOnResize () {
-    if (!this.state.hasScrolled) {
+    if (!this.state.hasCentered) {
       return this.centerSpread()
     }
   }
@@ -79,7 +79,7 @@ class OrderBook extends React.Component {
       renderSize, renderPrice, renderPosition
     } = this.props
     const safeProps = R.omit(unsafePropNames, this.props)
-    const visibleAsks = asks.reverse().slice(0, depth)
+    const visibleAsks = asks.slice(0, depth).reverse()
     const visibleBids = bids.slice(0, depth)
     const spread = this.state.hasOrders ? getPrice(visibleAsks.last()) - getPrice(visibleBids.first()) : undefined
     const dataConfigs = [

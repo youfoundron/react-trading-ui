@@ -2,7 +2,7 @@ import React from 'react'
 
 import collect from './utils/collect'
 import RealTimeOrderBook from './containers/RealTimeOrderBook'
-import RealTimeTradeHistory from './containers/RealTimeTradeHistory'
+// import RealTimeTradeHistory from './containers/RealTimeTradeHistory'
 
 class Root extends React.Component {
   componentWillMount () {
@@ -13,7 +13,7 @@ class Root extends React.Component {
     return (
       <div className='root'>
         <RealTimeOrderBook />
-        <RealTimeTradeHistory />
+        {/* <RealTimeTradeHistory /> */}
         <style jsx global>{`
           html { line-height: 1.15em; }
           html, body, #root, .demo { height: 100%; }

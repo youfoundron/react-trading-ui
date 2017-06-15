@@ -1,6 +1,6 @@
 import types from './actionTypes'
 
-export const fetchBook = (productId = 'ETH-USD', level = 2) => ({
+export const fetchBook = (productId = 'ETH-USD', level = 3) => ({
   type: types.BOOK_REQUEST,
   payload: { productId, level }
 })
